@@ -13,7 +13,14 @@ function luabt.create(node)
       for index, child in ipairs(node.children) do
          children[index] = luabt.create(child)
       end
-      if node.type == "sequence" then
+      if node.type == "negate" then
+         -- return a negate decorator node
+         return function()
+            child = children[1]
+            running, success = child()
+            return running, not success
+         end
+      elseif node.type == "sequence" then
          -- return a sequence control flow node
          return function()
             for index, child in ipairs(children) do
