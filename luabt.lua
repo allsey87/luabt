@@ -52,11 +52,3 @@ end
 
 -- return the module
 return luabt;
-
-
-
-
-
-
-
-

@@ -13,6 +13,7 @@ walker_root_node = {
       function()
          local str = string.format("location = %.2f, %.2f", location.x, location.y)
          print(str)
+         return false, true -- (not running, success)
       end,
       {
          type = "selector",
@@ -21,9 +22,9 @@ walker_root_node = {
             function()
                if math.abs(location.x - target.x) < 0.005 and 
                   math.abs(location.y - target.y) < 0.005 then
-                  return false, true
+                  return false, true -- (not running, success)
                else
-                  return false, false
+                  return false, false -- (not running, fail)
                end
             end,
             -- action leaf, move towards target
@@ -36,7 +37,7 @@ walker_root_node = {
                -- move
                location.x = location.x + 1.5 * err.x
                location.y = location.y + 1.5 * err.y
-               return true
+               return true -- (running)
             end,
          }
       }
