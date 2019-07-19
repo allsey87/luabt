@@ -17,7 +17,7 @@ walker_root_node = {
       {
          type = "selector",
          children = {
-            -- condition leaf, is our location within a threshold of the target
+            -- condition leaf, is our location within a threshold of the target?
             function()
                if math.abs(location.x - target.x) < 0.005 and 
                   math.abs(location.y - target.y) < 0.005 then
